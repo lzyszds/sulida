@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Layout from "@/layout/Layout.vue"
+import SubPageLayout from "@/layout/SubPageLayout.vue"
 import { useStorage } from '@vueuse/core';
 
 const token = useStorage('token', '')
@@ -21,6 +22,57 @@ const routes = [
                 name: '首页',
                 namePath: "pages-index",
                 component: () => import('@/pages/home/index.vue'),
+            },
+        ]
+    },
+    {
+        path: "/subpage",
+        name: "subpage",
+        component: SubPageLayout,
+        icon: "carbon:ibm-cloud-resiliency",
+        meta: { title: "子页面", },
+        children: [
+            {
+                path: "reservation",
+                name: '订单预约',
+                namePath: "subpage-reservation",
+                component: () => import('@/pages/subpage/Reservation.vue'),
+            },
+            {
+                path: "credit",
+                name: '信用优化',
+                namePath: "subpage-credit",
+                component: () => import('@/pages/subpage/Credit.vue'),
+            },
+            {
+                path: "consumption",
+                name: '消费增值',
+                namePath: "subpage-consumption",
+                component: () => import('@/pages/subpage/Consumption.vue'),
+            },
+            {
+                path: "fission",
+                name: '裂变商家',
+                namePath: "subpage-fission",
+                component: () => import('@/pages/subpage/Fission.vue'),
+            },
+            {
+                path: "data",
+                name: '数据优化',
+                namePath: "subpage-data",
+                component: () => import('@/pages/subpage/Data.vue'),
+            },
+            {
+                path: "teamDetail",
+                name: '团队订单明细',
+                namePath: "subpage-teamDetail",
+                component: () => import('@/pages/subpage/TeamDetail.vue'),
+            },
+            {
+                path: "storeAuth",
+                name: '店铺认证',
+                namePath: "subpage-storeAuth",
+                component: () => import('@/pages/subpage/StoreAuth.vue'),
             },
         ]
     },

@@ -1,3 +1,34 @@
+<script setup>
+
+const router = useRouter();
+// 团队数据
+const teamStats = reactive({
+  matrixTotalAmount: 0,
+  matrixCount: 0,
+  completedMatrixAmount: 0,
+  completedMatrixCount: 0,
+  teamMatrixPeople: 0,
+  directPushPeople: 0,
+  newMatrixPeople: 0,
+  personalPurchase: 0,
+  personalTotal: 0,
+  teamPurchase: 0,
+  teamTotal: 0,
+});
+
+// 团队成员数据
+const teamMembers = ref([]);
+
+// 模拟加载数据的方法
+const loadTeamData = () => {
+  // 这里可以添加API调用来获取实际数据
+  console.log("Loading team data...");
+};
+
+// 组件挂载时加载数据
+loadTeamData();
+</script>
+
 <template>
   <div class="container">
     <!-- 头部 -->
@@ -5,7 +36,7 @@
       title="我的团队"
       right-text="团队订单明细"
       right-arrow
-      @click-right="onClickLeft"
+      @click-right="router.push('/subpage/teamDetail')"
     />
 
     <!-- 头像区域 -->
@@ -93,37 +124,6 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import { ref, reactive } from "vue";
-
-// 团队数据
-const teamStats = reactive({
-  matrixTotalAmount: 0,
-  matrixCount: 0,
-  completedMatrixAmount: 0,
-  completedMatrixCount: 0,
-  teamMatrixPeople: 0,
-  directPushPeople: 0,
-  newMatrixPeople: 0,
-  personalPurchase: 0,
-  personalTotal: 0,
-  teamPurchase: 0,
-  teamTotal: 0,
-});
-
-// 团队成员数据
-const teamMembers = ref([]);
-
-// 模拟加载数据的方法
-const loadTeamData = () => {
-  // 这里可以添加API调用来获取实际数据
-  console.log("Loading team data...");
-};
-
-// 组件挂载时加载数据
-loadTeamData();
-</script>
 
 <style scoped>
 /* 基础样式 */
