@@ -14,13 +14,43 @@ const routes = [
         name: "pages",
         component: Layout,
         icon: "carbon:ibm-cloud-resiliency",
-        meta: { title: "首页", requireAuth: true },
+        meta: { title: "首页", },
         children: [
             {
                 path: "index",
                 name: '首页',
                 namePath: "pages-index",
                 component: () => import('@/pages/home/index.vue'),
+            },
+        ]
+    },
+    {
+        path: "/team",
+        name: "team",
+        component: Layout,
+        icon: "carbon:ibm-cloud-resiliency",
+        meta: { title: "团队矩阵", },
+        children: [
+            {
+                path: "index",
+                name: '团队矩阵',
+                namePath: "team-index",
+                component: () => import('@/pages/team/index.vue'),
+            },
+        ]
+    },
+    {
+        path: "/mine",
+        name: "mine",
+        component: Layout,
+        icon: "carbon:ibm-cloud-resiliency",
+        meta: { title: "我的", },
+        children: [
+            {
+                path: "index",
+                name: '我的',
+                namePath: "mine-index",
+                component: () => import('@/pages/mine/index.vue'),
             },
         ]
     },

@@ -9,11 +9,11 @@ const code = ref(""); // 验证码输入值
 const captcheCode = ref(""); // 真实验证码值
 const onSubmit = (values) => {
   if (values.code !== captcheCode.value) {
-    showDialog({ message: "验证码错误" });
+    showFailToast("验证码错误");
     return;
   }
   if (values.password !== values.secondPwd) {
-    showDialog({ message: "两次输入的密码不一致" });
+    showFailToast("两次输入的密码不一致");
     return;
   }
 
