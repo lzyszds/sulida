@@ -1,21 +1,3 @@
-<template>
-  <div class="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-lg">
-    <!-- 图片验证码 -->
-    <div class="mb-8 p-4 border rounded-lg">
-      <div class="flex flex-col items-center">
-        <canvas
-          ref="captchaCanvas"
-          width="120"
-          height="40"
-          class="border border-gray-300 cursor-pointer bg-gray-100"
-          @click="generateImageCaptcha"
-        ></canvas>
-      </div>
-       
-    </div>
-  </div>
-</template>
-
 <script setup>
 import { ref, reactive, onMounted, nextTick } from "vue";
 
@@ -28,6 +10,8 @@ const imageCaptcha = reactive({
 });
 
 const captchaCanvas = ref(null);
+
+const exit = defineEmits(["captcheCode"]);
 
 // 生成图片验证码
 const generateImageCaptcha = () => {
@@ -54,6 +38,8 @@ const generateImageCaptcha = () => {
   imageCaptcha.userInput = "";
   imageCaptcha.error = "";
   imageCaptcha.verified = false;
+
+  exit("captcheCode", imageCaptcha.code);
 
   // 绘制验证码
   ctx.font = "20px Arial";
@@ -109,3 +95,20 @@ onMounted(async () => {
   generateImageCaptcha();
 });
 </script>
+
+<template>
+  <div class="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-lg">
+    <!-- 图片验证码 -->
+    <div class="mb-8 p-4 border rounded-lg">
+      <div class="flex flex-col items-center">
+        <canvas
+          ref="captchaCanvas"
+          width="120"
+          height="40"
+          class="border border-gray-300 cursor-pointer bg-gray-100"
+          @click="generateImageCaptcha"
+        ></canvas>
+      </div>
+    </div>
+  </div>
+</template>

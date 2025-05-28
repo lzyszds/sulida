@@ -1,15 +1,22 @@
 <script setup>
-const isShow = ref(false);
-const onSuccess = () => {
-  isShow.value = false;
-  console.log("验证码验证成功");
-};
+import { showDialog } from "vant";
 
 const username = ref("");
 const password = ref("");
 const secondPwd = ref("");
 const invitation = ref("");
+const code = ref(""); // 验证码输入值
+const captcheCode = ref(""); // 真实验证码值
 const onSubmit = (values) => {
+  if (values.code !== captcheCode.value) {
+    showDialog({ message: "验证码错误" });
+    return;
+  }
+  if (values.password !== values.secondPwd) {
+    showDialog({ message: "两次输入的密码不一致" });
+    return;
+  }
+
   console.log("submit", values);
 };
 </script>
@@ -58,14 +65,14 @@ const onSubmit = (values) => {
         :rules="[{ required: true, message: '请填写验证码' }]"
       >
         <template #button>
-          <Captche />
+          <Captche @captcheCode="(value) => (captcheCode = value)" />
         </template>
       </van-field>
     </van-cell-group>
     <div style="margin: 16px">
       <van-button round block type="success" native-type="submit"> 登录 </van-button>
-      <van-button round block type="primary" @click="$router.push('/register')">
-        注册新账号
+      <van-button round block type="primary" @click="$router.push('/login')">
+        返回登陆
       </van-button>
     </div>
   </van-form>
