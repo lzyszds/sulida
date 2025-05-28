@@ -30,7 +30,6 @@ const routes = [
         name: "subpage",
         component: SubPageLayout,
         icon: "carbon:ibm-cloud-resiliency",
-        meta: { title: "子页面", },
         children: [
             {
                 path: "reservation",
@@ -74,6 +73,57 @@ const routes = [
                 namePath: "subpage-storeAuth",
                 component: () => import('@/pages/subpage/StoreAuth.vue'),
             },
+        ]
+    },
+    {
+        path: "/serviceCharge",
+        name: "serviceCharge",
+        component: SubPageLayout,
+        icon: "carbon:ibm-cloud-resiliency",
+        children: [
+            {
+                path: "teamServiceFee",
+                name: '团队服务费统计',
+                namePath: "serviceCharge-teamServiceFee",
+                component: () => import('@/pages/service-charge/TeamServiceFee.vue'),
+            },
+            {
+                path: "order",
+                name: '我的订单',
+                namePath: "serviceCharge-order",
+                component: () => import('@/pages/service-charge/Order.vue'),
+            },
+             {
+                path: "storeList",
+                name: '店铺列表',
+                namePath: "serviceCharge-storeList",
+                component: () => import('@/pages/service-charge/StoreList.vue'),
+            },
+            {
+                path: "withdrawal",
+                name: '提现收益',
+                namePath: "serviceCharge-Withdrawal",
+                component: () => import('@/pages/service-charge/Withdrawal.vue'),
+            },
+            {
+                path: "consDetails",
+                name: '消费明细',
+                namePath: "serviceCharge-consDetails",
+                component: () => import('@/pages/service-charge/ConsDetails.vue'),
+            },
+            {
+                path: "valueAddList",
+                name: '增值清单',
+                namePath: "serviceCharge-valueAddList",
+                component: () => import('@/pages/service-charge/ValueAddList.vue'),
+            },
+            {
+                path: "customerService",
+                name: '联系客服',
+                namePath: "serviceCharge-customerService",
+                component: () => import('@/pages/service-charge/CustomerService.vue'),
+            },
+
         ]
     },
     {

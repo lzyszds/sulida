@@ -54,19 +54,19 @@ const form = ref({
         label="支付宝账号"
         placeholder="请输入支付宝账号"
       />
-      <van-field name="uploader" label="支付宝远程收款码" label-width="120px">
+      <van-field name="uploader" label="支付宝远程收款码" style="padding-bottom: 0;" label-width="120px">
         <template #input>
           <van-uploader max-count="1" v-model="form.zfbRemote" />
         </template>
       </van-field>
 
-      <van-field name="uploader" label="支付宝商家收款码" label-width="120px">
+      <van-field name="uploader" label="支付宝商家收款码" style="padding-bottom: 0;" label-width="120px">
         <template #input>
           <van-uploader max-count="1" v-model="form.zfbMerchant" />
         </template>
       </van-field>
 
-      <van-field name="uploader" label="微信商家收款码" label-width="120px">
+      <van-field name="uploader" label="微信商家收款码" style="padding-bottom: 0;" label-width="120px">
         <template #input>
           <van-uploader max-count="1" v-model="form.wxMerchant" />
         </template>
@@ -92,7 +92,7 @@ const form = ref({
 
 <style scoped>
 .store-auth {
-  padding: 8px 0;
+  padding: 8px 0 16px;
   background-color: #f5f5f5;
 }
 .store-auth > .van-cell {

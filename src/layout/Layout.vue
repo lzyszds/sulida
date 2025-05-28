@@ -13,7 +13,7 @@
 .view {
   position: relative;
   width: 100vw;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 50px);
   overflow: auto;
   background-color: #fff;
 }

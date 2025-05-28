@@ -287,4 +287,7 @@ const gridList = [
     border: none;
   }
 }
+img{
+  user-select: none;
+}
 </style>
